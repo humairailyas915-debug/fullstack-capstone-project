@@ -1,0 +1,3 @@
+curl -X GET http://localhost:3060/api/search?category=Furniture
+
+[{"id":"1","name":"Chair","category":"Furniture","condition":"New","price":"0"}]
