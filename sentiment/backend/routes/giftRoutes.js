@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const connectToDatabase = require('../models/db');
 
-// Get all gifts
+// Get all gifts (/api/gifts)
 router.get('/', async (req, res) => {
     try {
         const db = await connectToDatabase();
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Get gift by ID
+// Get gift by ID (/api/gifts/:id)
 router.get('/:id', async (req, res) => {
     try {
         const db = await connectToDatabase();
