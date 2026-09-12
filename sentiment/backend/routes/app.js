@@ -1,10 +1,14 @@
-const express = require('express');
-const app = express();
-const giftRoutes = require('./routes/giftRoutes');
-const searchRoutes = require('./routes/searchRoutes');
+import React from 'react';
 
-app.use(express.json());
-app.use('/api/gifts', giftRoutes);
-app.use('/api/search', searchRoutes);
+const handleRegister = async (user) => {
+    const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+    return await response.json();
+};
 
-app.listen(3050, () => console.log('Server running on port 3050'));
+export default handleRegister;
