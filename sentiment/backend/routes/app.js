@@ -1,20 +1,15 @@
-const express = require('express');
-const app = express();
+import React from 'react';
 
-const giftRoutes = require('./routes/giftRoutes');
-const searchRoutes = require('./routes/searchRoutes');
-const authRoutes = require('./routes/authRoutes');
+const handleLogin = async (credentials) => {
+    const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + credentials.token
+        },
+        body: JSON.stringify(credentials)
+    });
+    return await response.json();
+};
 
-app.use(express.json());
-
-// Mount routes
-app.use('/api/gifts', giftRoutes);
-app.use('/api/search', searchRoutes);
-app.use('/api/auth', authRoutes);
-
-const PORT = process.env.PORT || 3050;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-
-module.exports = app;
+export default handleLogin;
